@@ -1,0 +1,43 @@
+<?php
+#connection
+$servername = "localhost";
+$username = "load_balancer";
+$password = "$8tP7j0e";
+$dbname = "load_balancer";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+
+#Zeit
+$time = date("H:i:s", time());
+$time_1 = date("H:i:s", time() + 20);
+
+#IP Address
+$_SERVER['REMOTE_ADDR'];
+
+$random = rand(10, 1000);
+$user = $_SERVER, $random
+
+#in Datenbank einfügen
+$sql_1 = "INSERT INTO Application_1(username, time) VALUE ('$user', '$time')";
+
+
+
+#Zeitupdate und counter
+for($i = 1; ; $i++){
+		$sql_3 = "UPDATE Application_1 SET time = '$time' WHERE username = '$user'";
+		$count = "SELECT COUNT username FROM Application_1";
+		if($count > '250'){
+			echo "Zu viele Zuseher";
+			$sql_3 = "DELETE FROM Application WHERE username LIKE '$user'"; 
+			break;
+		}
+		else{
+			sleep(2);
+			$i++;
+		}
+}
+
+$conn->close()
+
+?>
